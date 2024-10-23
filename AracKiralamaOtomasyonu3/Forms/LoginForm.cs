@@ -25,7 +25,7 @@ namespace AracKiralamaOtomasyonu3
                     {
                         Ad = "Ahmet",
                         Soyad = "Yılmaz",
-                        Email = "ahmet@example.com",
+                        Email = "Ahmet@example.com",
                         Sifre = "12345",  // Not: Güçlü şifreleme kullanılmalı
                         Rol = "Musteri"
                     };
