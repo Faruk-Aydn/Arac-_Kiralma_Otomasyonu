@@ -1,32 +1,39 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing; // For custom colors
+using System.Drawing;
 using AracKiralamaOtomasyonu3.DAL;
 using AracKiralamaOtomasyonu3.Models;
+using System.Data.Entity;
 
 namespace AracKiralamaOtomasyonu3
 {
     public partial class MusteriForm : Form
     {
         private int _musteriId;
+        private System.Timers.Timer _hatirlatmaTimer;
 
         public MusteriForm(int musteriId)
         {
             InitializeComponent();
             _musteriId = musteriId;
+            StartHatirlatmaTimer();
         }
 
         private void MusteriForm_Load(object sender, EventArgs e)
         {
-            // Form arka plan rengini ayarla
             this.BackColor = Color.CadetBlue;
+            AracListesiniYukle(); // Mevcut araçları listele
+            StyleDataGridView(dgvMevcutAraclar); // DataGridView stil ayarları
+        }
 
-            // Mevcut araçları listeleyin
+        // Mevcut araçları listeleme fonksiyonu
+        private void AracListesiniYukle()
+        {
             using (var context = new AracKiralamaContext())
             {
                 dgvMevcutAraclar.DataSource = context.Araclar
-                    .Where(a => !a.KiralandiMi) // Kiralanmamış araçlar
+                    .Where(a => !a.KiralandiMi)
                     .Select(a => new
                     {
                         a.AracId,
@@ -36,10 +43,6 @@ namespace AracKiralamaOtomasyonu3
                     })
                     .ToList();
             }
-
-            // DataGridView stil ayarları
-            StyleDataGridView(dgvMevcutAraclar);
-            StyleDataGridView(dgvKiralamaGecmisi);
         }
 
         // DataGridView stillendirme fonksiyonu
@@ -56,62 +59,154 @@ namespace AracKiralamaOtomasyonu3
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
         }
 
+        // Teslim hatırlatma zamanlayıcı başlatma
+        private void StartHatirlatmaTimer()
+        {
+            _hatirlatmaTimer = new System.Timers.Timer();
+            _hatirlatmaTimer.Interval = 86400000; // 24 saat
+            _hatirlatmaTimer.Elapsed += (sender, e) => TeslimHatirlatma();
+            _hatirlatmaTimer.AutoReset = true;
+            _hatirlatmaTimer.Start();
+        }
+
+        private void TeslimHatirlatma()
+        {
+            using (var context = new AracKiralamaContext())
+            {
+                var yaklasanTeslimler = context.Kiralamalar
+                    .Where(k => k.TeslimTarihi.HasValue && k.TeslimTarihi.Value.Date == DateTime.Now.Date.AddDays(1))
+                    .Include(k => k.Kullanici)
+                    .ToList();
+
+                foreach (var kiralama in yaklasanTeslimler)
+                {
+                    MessageBox.Show($"{kiralama.Kullanici.Ad}, aracınızı yarın teslim etmeniz gerekmektedir.",
+                                    "Teslim Hatırlatma",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        // Araç modeline göre filtreleme
+        private void FiltreleAraclar(string model)
+        {
+            using (var context = new AracKiralamaContext())
+            {
+                var araclar = context.Araclar
+                    .Where(a => a.Model.Contains(model) && !a.KiralandiMi)
+                    .Select(a => new
+                    {
+                        a.AracId,
+                        a.Model,
+                        a.Plaka,
+                        a.Fiyat
+                    })
+                    .ToList();
+
+                dgvMevcutAraclar.DataSource = araclar;
+            }
+        }
+
+        private void btnFiltrele_Click(object sender, EventArgs e)
+        {
+            string model = txtModel.Text;
+            FiltreleAraclar(model);
+        }
+
+        // Fatura geçmişini görüntüle
+        private void btnFaturaGecmisi_Click(object sender, EventArgs e)
+        {
+            FaturaGecmisiForm faturaForm = new FaturaGecmisiForm(_musteriId);
+            faturaForm.ShowDialog();
+        }
+
+        // Araç kiralama işlemi ve fatura oluşturma
         private void btnAracKirala_Click(object sender, EventArgs e)
         {
             if (dgvMevcutAraclar.SelectedRows.Count > 0)
             {
                 int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["AracId"].Value);
-                using (var context = new AracKiralamaContext())
-                {
-                    var kiralama = new Kiralama
-                    {
-                        AracId = aracId,
-                        KullaniciId = _musteriId,
-                        KiralamaTarihi = DateTime.Now
-                    };
-                    context.Kiralamalar.Add(kiralama);
+                int kiralamaGunu = (int)numKiralamaGunu.Value;
 
-                    var arac = context.Araclar.Find(aracId);
-                    arac.KiralandiMi = true;
-                    context.SaveChanges();
-                }
-
-                MessageBox.Show("Araç başarıyla kiralandı!");
-
-                // Ödeme formuna yönlendirme
+                // Ödeme ekranına yönlendirme
                 OdemeForm odemeForm = new OdemeForm();
                 odemeForm.ShowDialog();
 
-                MusteriForm_Load(sender, e); // Listeyi yenile
+                if (odemeForm.OdemeBasarili)
+                {
+                    using (var context = new AracKiralamaContext())
+                    {
+                        var kiralama = new Kiralama
+                        {
+                            AracId = aracId,
+                            KullaniciId = _musteriId,
+                            KiralamaTarihi = DateTime.Now,
+                            TeslimTarihi = DateTime.Now.AddDays(kiralamaGunu)
+                        };
+                        context.Kiralamalar.Add(kiralama);
+
+                        var arac = context.Araclar.Find(aracId);
+                        arac.KiralandiMi = true;
+                        context.SaveChanges();
+
+                        decimal toplamTutar = arac.Fiyat * kiralamaGunu;
+                        Fatura fatura = new Fatura
+                        {
+                            KiralamaId = kiralama.KiralamaId,
+                            Tutar = toplamTutar,
+                            FaturaTarihi = DateTime.Now
+                        };
+                        context.Faturalar.Add(fatura);
+                        context.SaveChanges();
+
+                        MessageBox.Show(
+                            $"Fatura Detayları:\n\n" +
+                            $"Müşteri: {context.Kullanicilar.Find(_musteriId).Ad} {context.Kullanicilar.Find(_musteriId).Soyad}\n" +
+                            $"Araç: {arac.Model}\n" +
+                            $"Plaka: {arac.Plaka}\n" +
+                            $"Kiralama Tarihi: {kiralama.KiralamaTarihi:dd/MM/yyyy}\n" +
+                            $"Teslim Tarihi: {kiralama.TeslimTarihi:dd/MM/yyyy}\n" +
+                            $"Toplam Tutar: {toplamTutar:C}",
+                            "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    MessageBox.Show("Araç başarıyla kiralandı ve ödeme tamamlandı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AracListesiniYukle();
+                }
+                else
+                {
+                    MessageBox.Show("Ödeme başarısız. Kiralama işlemi iptal edildi.", "Ödeme Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen kiralamak istediğiniz aracı seçin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
+        // Kiralama geçmişini görüntüle
         private void btnGecmisiGor_Click(object sender, EventArgs e)
         {
             using (var context = new AracKiralamaContext())
             {
                 var kiralamaGecmisi = context.Kiralamalar
-                    .Where(k => k.KullaniciId == _musteriId)
-                    .Select(k => new
-                    {
-                        k.Arac.Model,
-                        k.Arac.Plaka,
-                        k.KiralamaTarihi,
-                        TeslimTarihi = k.TeslimTarihi.HasValue ? k.TeslimTarihi.Value : (DateTime?)null
-                    })
-                    .ToList();
+        .Where(k => k.KullaniciId == _musteriId)
+        .Include(k => k.Arac) // İlgili `Arac` verilerini dahil ediyoruz
+        .Include(k => k.Kullanici) // İlişkili diğer verileri önceden yüklüyoruz
+        .ToList();
 
                 var gosterilecekVeri = kiralamaGecmisi.Select(k => new
                 {
-                    k.Model,
-                    k.Plaka,
+                    k.Arac.Model,
+                    k.Arac.Plaka,
                     k.KiralamaTarihi,
                     TeslimTarihi = k.TeslimTarihi.HasValue
-                        ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
-                        : "Henüz Teslim Edilmedi"
+                                   ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
+                                   : "Henüz Teslim Edilmedi"
                 }).ToList();
 
-                dgvKiralamaGecmisi.DataSource = gosterilecekVeri;
+                dgvMevcutAraclar.DataSource = kiralamaGecmisi;
             }
         }
     }

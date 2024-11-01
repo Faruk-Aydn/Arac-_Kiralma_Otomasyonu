@@ -146,6 +146,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FaturaGecmisiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FaturaGecmisiForm.Designer.cs">
+      <DependentUpon>FaturaGecmisiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KiralayanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,8 +202,22 @@
     <Compile Include="Migrations\202410171223374_AddBakimTarihiToArac.designer.cs">
       <DependentUpon>202410171223374_AddBakimTarihiToArac.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202410291356454_Güncelleme.cs" />
+    <Compile Include="Migrations\202410291356454_Güncelleme.designer.cs">
+      <DependentUpon>202410291356454_Güncelleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410300631463_AddFaturaTable.cs" />
+    <Compile Include="Migrations\202410300631463_AddFaturaTable.designer.cs">
+      <DependentUpon>202410300631463_AddFaturaTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410300641087_AddBakimTable.cs" />
+    <Compile Include="Migrations\202410300641087_AddBakimTable.designer.cs">
+      <DependentUpon>202410300641087_AddBakimTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Arac.cs" />
+    <Compile Include="Models\Bakim.cs" />
+    <Compile Include="Models\Fatura.cs" />
     <Compile Include="Models\Kiralama.cs" />
     <Compile Include="Models\KiralamaDetayDto.cs" />
     <Compile Include="Models\Kullanici.cs" />
@@ -232,6 +252,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410171223374_AddBakimTarihiToArac.resx">
       <DependentUpon>202410171223374_AddBakimTarihiToArac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410291356454_Güncelleme.resx">
+      <DependentUpon>202410291356454_Güncelleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410300631463_AddFaturaTable.resx">
+      <DependentUpon>202410300631463_AddFaturaTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410300641087_AddBakimTable.resx">
+      <DependentUpon>202410300641087_AddBakimTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -19,5 +19,7 @@ namespace AracKiralamaOtomasyonu3.DAL
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Arac> Araclar { get; set; }
         public DbSet<Kiralama> Kiralamalar { get; set; }
+        public DbSet<Fatura> Faturalar { get; set; }
+        public DbSet<Bakim> Bakimlar { get; set; }
     }
 }

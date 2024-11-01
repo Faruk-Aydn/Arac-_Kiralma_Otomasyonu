@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-
-
-
+using System.Windows.Forms;
 
 namespace AracKiralamaOtomasyonu3.BLL
 {
@@ -18,10 +16,29 @@ namespace AracKiralamaOtomasyonu3.BLL
         {
             _context = new AracKiralamaContext();
         }
+        private bool BakimKontrolu(int aracId)
+        {
+            using (var context = new AracKiralamaContext())
+            {
+                var sonBakim = context.Bakimlar
+                    .Where(b => b.AracId == aracId)
+                    .OrderByDescending(b => b.BakimTarihi)
+                    .FirstOrDefault();
+
+                if (sonBakim != null && sonBakim.BakimTarihi.AddMonths(6) < DateTime.Now)
+                {
+                    MessageBox.Show("Bu aracın bakım zamanı geldi.", "Bakım Uyarısı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            return true;
+        }
 
         // Araç kiralama işlemi
         public void AracKirala(int aracId, int musteriId)
         {
+            if (!BakimKontrolu(aracId)) return; // Bakım zamanı gelmişse kiralama yapılmaz
+
             // Araç kiralama işlemi
             Kiralama yeniKiralama = new Kiralama
             {
