@@ -1,4 +1,5 @@
-﻿using System;
+﻿// MusteriForm.cs
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
@@ -23,11 +24,10 @@ namespace AracKiralamaOtomasyonu3
         private void MusteriForm_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.CadetBlue;
-            AracListesiniYukle(); // Mevcut araçları listele
-            StyleDataGridView(dgvMevcutAraclar); // DataGridView stil ayarları
+            AracListesiniYukle();
+            StyleDataGridView(dgvMevcutAraclar);
         }
 
-        // Mevcut araçları listeleme fonksiyonu
         private void AracListesiniYukle()
         {
             using (var context = new AracKiralamaContext())
@@ -45,7 +45,6 @@ namespace AracKiralamaOtomasyonu3
             }
         }
 
-        // DataGridView stillendirme fonksiyonu
         private void StyleDataGridView(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
@@ -59,13 +58,14 @@ namespace AracKiralamaOtomasyonu3
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
         }
 
-        // Teslim hatırlatma zamanlayıcı başlatma
         private void StartHatirlatmaTimer()
         {
-            _hatirlatmaTimer = new System.Timers.Timer();
-            _hatirlatmaTimer.Interval = 86400000; // 24 saat
+            _hatirlatmaTimer = new System.Timers.Timer
+            {
+                Interval = 86400000, // 24 hours
+                AutoReset = true
+            };
             _hatirlatmaTimer.Elapsed += (sender, e) => TeslimHatirlatma();
-            _hatirlatmaTimer.AutoReset = true;
             _hatirlatmaTimer.Start();
         }
 
@@ -88,7 +88,6 @@ namespace AracKiralamaOtomasyonu3
             }
         }
 
-        // Araç modeline göre filtreleme
         private void FiltreleAraclar(string model)
         {
             using (var context = new AracKiralamaContext())
@@ -114,14 +113,12 @@ namespace AracKiralamaOtomasyonu3
             FiltreleAraclar(model);
         }
 
-        // Fatura geçmişini görüntüle
         private void btnFaturaGecmisi_Click(object sender, EventArgs e)
         {
             FaturaGecmisiForm faturaForm = new FaturaGecmisiForm(_musteriId);
             faturaForm.ShowDialog();
         }
 
-        // Araç kiralama işlemi ve fatura oluşturma
         private void btnAracKirala_Click(object sender, EventArgs e)
         {
             if (dgvMevcutAraclar.SelectedRows.Count > 0)
@@ -129,7 +126,6 @@ namespace AracKiralamaOtomasyonu3
                 int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["AracId"].Value);
                 int kiralamaGunu = (int)numKiralamaGunu.Value;
 
-                // Ödeme ekranına yönlendirme
                 OdemeForm odemeForm = new OdemeForm();
                 odemeForm.ShowDialog();
 
@@ -185,16 +181,15 @@ namespace AracKiralamaOtomasyonu3
             }
         }
 
-        // Kiralama geçmişini görüntüle
         private void btnGecmisiGor_Click(object sender, EventArgs e)
         {
             using (var context = new AracKiralamaContext())
             {
                 var kiralamaGecmisi = context.Kiralamalar
-        .Where(k => k.KullaniciId == _musteriId)
-        .Include(k => k.Arac) // İlgili `Arac` verilerini dahil ediyoruz
-        .Include(k => k.Kullanici) // İlişkili diğer verileri önceden yüklüyoruz
-        .ToList();
+                    .Where(k => k.KullaniciId == _musteriId)
+                    .Include(k => k.Arac)
+                    .Include(k => k.Kullanici)
+                    .ToList();
 
                 var gosterilecekVeri = kiralamaGecmisi.Select(k => new
                 {
@@ -202,12 +197,14 @@ namespace AracKiralamaOtomasyonu3
                     k.Arac.Plaka,
                     k.KiralamaTarihi,
                     TeslimTarihi = k.TeslimTarihi.HasValue
-                                   ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
-                                   : "Henüz Teslim Edilmedi"
+                        ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
+                        : "Henüz Teslim Edilmedi"
                 }).ToList();
 
-                dgvMevcutAraclar.DataSource = kiralamaGecmisi;
+                dgvKiralanmisAraclar.DataSource = gosterilecekVeri;
             }
         }
+
+     
     }
 }

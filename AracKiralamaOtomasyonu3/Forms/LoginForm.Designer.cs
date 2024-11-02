@@ -138,7 +138,6 @@ namespace AracKiralamaOtomasyonu3
             this.leftPictureBox.Size = new System.Drawing.Size(259, 300);
             this.leftPictureBox.TabIndex = 0;
             this.leftPictureBox.TabStop = false;
-          
             // 
             // rightPictureBox
             // 
@@ -149,14 +148,13 @@ namespace AracKiralamaOtomasyonu3
             this.rightPictureBox.Size = new System.Drawing.Size(300, 197);
             this.rightPictureBox.TabIndex = 1;
             this.rightPictureBox.TabStop = false;
-          
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1390, 526);
+            this.ClientSize = new System.Drawing.Size(1382, 526);
             this.Controls.Add(this.leftPictureBox);
             this.Controls.Add(this.rightPictureBox);
             this.Controls.Add(this.btnTogglePassword);
