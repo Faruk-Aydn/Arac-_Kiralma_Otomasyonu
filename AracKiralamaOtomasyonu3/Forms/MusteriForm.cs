@@ -1,8 +1,8 @@
-﻿// MusteriForm.cs
-using System;
+﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing;
 using AracKiralamaOtomasyonu3.DAL;
 using AracKiralamaOtomasyonu3.Models;
 using System.Data.Entity;
@@ -19,6 +19,7 @@ namespace AracKiralamaOtomasyonu3
             InitializeComponent();
             _musteriId = musteriId;
             StartHatirlatmaTimer();
+            dgvMevcutAraclar.SelectionChanged += dgvMevcutAraclar_SelectionChanged;
         }
 
         private void MusteriForm_Load(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace AracKiralamaOtomasyonu3
         {
             _hatirlatmaTimer = new System.Timers.Timer
             {
-                Interval = 86400000, // 24 hours
+                Interval = 86400000,
                 AutoReset = true
             };
             _hatirlatmaTimer.Elapsed += (sender, e) => TeslimHatirlatma();
@@ -205,6 +206,31 @@ namespace AracKiralamaOtomasyonu3
             }
         }
 
-     
+        private void dgvMevcutAraclar_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvMevcutAraclar.SelectedRows.Count > 0)
+            {
+                int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["AracId"].Value);
+
+                // Seçilen aracın resmini veritabanından alıp göster
+                using (var context = new AracKiralamaContext())
+                {
+                    var arac = context.Araclar.Find(aracId);
+                    if (arac != null && arac.Resim != null)
+                    {
+                        using (var ms = new System.IO.MemoryStream(arac.Resim))
+                        {
+                            pbAracResim.Image = Image.FromStream(ms); // Resmi PictureBox'a yükle
+                        }
+                    }
+                    else
+                    {
+                        pbAracResim.Image = null; // Resim yoksa PictureBox'ı temizle
+                    }
+                }
+            }
+        }
+
+
     }
 }

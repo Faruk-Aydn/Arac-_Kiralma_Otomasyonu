@@ -1,4 +1,7 @@
-﻿namespace AracKiralamaOtomasyonu3
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace AracKiralamaOtomasyonu3
 {
     partial class FaturaGecmisiForm
     {
@@ -21,34 +24,43 @@
             this.lblFaturaGecmisi = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaturaGecmisi)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvFaturaGecmisi
-            // 
-            this.dgvFaturaGecmisi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFaturaGecmisi.Location = new System.Drawing.Point(30, 50);
-            this.dgvFaturaGecmisi.Name = "dgvFaturaGecmisi";
-            this.dgvFaturaGecmisi.Size = new System.Drawing.Size(740, 350);
-            this.dgvFaturaGecmisi.TabIndex = 0;
-            this.dgvFaturaGecmisi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFaturaGecmisi_CellDoubleClick);
-            // 
-            // lblFaturaGecmisi
-            // 
-            this.lblFaturaGecmisi.AutoSize = true;
-            this.lblFaturaGecmisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.lblFaturaGecmisi.Location = new System.Drawing.Point(30, 20);
-            this.lblFaturaGecmisi.Name = "lblFaturaGecmisi";
-            this.lblFaturaGecmisi.Size = new System.Drawing.Size(168, 29);
-            this.lblFaturaGecmisi.TabIndex = 1;
-            this.lblFaturaGecmisi.Text = "Fatura Geçmişi";
-            // 
-            // FaturaGecmisiForm
-            // 
+
+            // Form arka plan rengi ve genel ayarları
+            this.BackColor = Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblFaturaGecmisi);
-            this.Controls.Add(this.dgvFaturaGecmisi);
             this.Name = "FaturaGecmisiForm";
             this.Text = "Fatura Geçmişi";
             this.Load += new System.EventHandler(this.FaturaGecmisiForm_Load);
+
+            // Label - Fatura Geçmişi Başlığı
+            this.lblFaturaGecmisi.AutoSize = true;
+            this.lblFaturaGecmisi.Font = new Font("Arial", 16F, FontStyle.Bold);
+            this.lblFaturaGecmisi.ForeColor = Color.White;
+            this.lblFaturaGecmisi.Location = new Point(30, 20);
+            this.lblFaturaGecmisi.Name = "lblFaturaGecmisi";
+            this.lblFaturaGecmisi.Size = new Size(168, 29);
+            this.lblFaturaGecmisi.Text = "Fatura Geçmişi";
+
+            // DataGridView - Fatura Geçmişi
+            this.dgvFaturaGecmisi.Location = new Point(30, 60);
+            this.dgvFaturaGecmisi.Size = new Size(740, 350);
+            this.dgvFaturaGecmisi.BackgroundColor = Color.LightGray;
+            this.dgvFaturaGecmisi.BorderStyle = BorderStyle.None;
+            this.dgvFaturaGecmisi.EnableHeadersVisualStyles = false;
+            this.dgvFaturaGecmisi.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSlateGray;
+            this.dgvFaturaGecmisi.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.dgvFaturaGecmisi.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+            this.dgvFaturaGecmisi.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+            this.dgvFaturaGecmisi.DefaultCellStyle.ForeColor = Color.Black;
+            this.dgvFaturaGecmisi.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            this.dgvFaturaGecmisi.DefaultCellStyle.SelectionForeColor = Color.White;
+            this.dgvFaturaGecmisi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFaturaGecmisi.CellDoubleClick += new DataGridViewCellEventHandler(this.dgvFaturaGecmisi_CellDoubleClick);
+
+            // Bileşenleri Forma Ekleme
+            this.Controls.Add(this.lblFaturaGecmisi);
+            this.Controls.Add(this.dgvFaturaGecmisi);
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaturaGecmisi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

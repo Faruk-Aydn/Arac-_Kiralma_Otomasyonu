@@ -214,6 +214,18 @@
     <Compile Include="Migrations\202410300641087_AddBakimTable.designer.cs">
       <DependentUpon>202410300641087_AddBakimTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411021212246_Güncelleme1.cs" />
+    <Compile Include="Migrations\202411021212246_Güncelleme1.designer.cs">
+      <DependentUpon>202411021212246_Güncelleme1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411021249044_Güncelleme2.cs" />
+    <Compile Include="Migrations\202411021249044_Güncelleme2.designer.cs">
+      <DependentUpon>202411021249044_Güncelleme2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411031056016_AracResimEkleme.cs" />
+    <Compile Include="Migrations\202411031056016_AracResimEkleme.designer.cs">
+      <DependentUpon>202411031056016_AracResimEkleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Arac.cs" />
     <Compile Include="Models\Bakim.cs" />
@@ -261,6 +273,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410300641087_AddBakimTable.resx">
       <DependentUpon>202410300641087_AddBakimTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411021212246_Güncelleme1.resx">
+      <DependentUpon>202411021212246_Güncelleme1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411021249044_Güncelleme2.resx">
+      <DependentUpon>202411021249044_Güncelleme2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411031056016_AracResimEkleme.resx">
+      <DependentUpon>202411031056016_AracResimEkleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

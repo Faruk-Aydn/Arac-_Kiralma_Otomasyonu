@@ -12,5 +12,6 @@ namespace AracKiralamaOtomasyonu3.Models
         public string Plaka { get; set; }
         public DateTime KiralamaTarihi { get; set; }
         public string TeslimTarihi { get; set; }
+       
     }
 }

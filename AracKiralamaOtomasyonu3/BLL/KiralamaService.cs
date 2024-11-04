@@ -45,7 +45,9 @@ namespace AracKiralamaOtomasyonu3.BLL
                 AracId = aracId,
                 KullaniciId = musteriId,
                 KiralamaTarihi = DateTime.Now,
-                TeslimTarihi = null
+                TeslimTarihi = null,
+               
+
             };
 
             // Aracı kiralanmış olarak işaretle
@@ -76,6 +78,7 @@ namespace AracKiralamaOtomasyonu3.BLL
                     Plaka = k.Arac.Plaka,
                     KiralamaTarihi = k.KiralamaTarihi,
                     TeslimTarihi = k.TeslimTarihi.HasValue ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy") : "Henüz İade Edilmedi"
+                    
                 }).ToList();
             }
         }
