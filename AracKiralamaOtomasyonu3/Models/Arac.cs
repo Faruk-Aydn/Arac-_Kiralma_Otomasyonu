@@ -25,5 +25,7 @@ namespace AracKiralamaOtomasyonu3.Models
         public DateTime? BakimTarihi { get; set; }  // Nullable Bakım Tarihi
 
         public ICollection<Kiralama> Kiralamalar { get; set; }
-    }
+        public virtual ICollection<AracFotograf> FotografListesi { get; set; }
+    
+}
 }

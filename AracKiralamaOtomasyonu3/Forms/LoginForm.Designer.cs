@@ -47,7 +47,7 @@ namespace AracKiralamaOtomasyonu3
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtEmail.ForeColor = System.Drawing.Color.Gray;
-            this.txtEmail.Location = new System.Drawing.Point(513, 105);
+            this.txtEmail.Location = new System.Drawing.Point(438, 105);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(300, 36);
             this.txtEmail.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace AracKiralamaOtomasyonu3
             this.txtPassword.BackColor = System.Drawing.Color.White;
             this.txtPassword.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtPassword.ForeColor = System.Drawing.Color.Gray;
-            this.txtPassword.Location = new System.Drawing.Point(513, 172);
+            this.txtPassword.Location = new System.Drawing.Point(438, 172);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(300, 36);
             this.txtPassword.TabIndex = 1;
@@ -76,7 +76,7 @@ namespace AracKiralamaOtomasyonu3
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Tahoma", 14F);
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblEmail.Location = new System.Drawing.Point(438, 105);
+            this.lblEmail.Location = new System.Drawing.Point(363, 105);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(69, 29);
             this.lblEmail.TabIndex = 2;
@@ -87,7 +87,7 @@ namespace AracKiralamaOtomasyonu3
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Tahoma", 14F);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblPassword.Location = new System.Drawing.Point(446, 175);
+            this.lblPassword.Location = new System.Drawing.Point(371, 179);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(61, 29);
             this.lblPassword.TabIndex = 3;
@@ -97,7 +97,7 @@ namespace AracKiralamaOtomasyonu3
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(513, 224);
+            this.btnLogin.Location = new System.Drawing.Point(438, 224);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(300, 40);
             this.btnLogin.TabIndex = 4;
@@ -107,7 +107,7 @@ namespace AracKiralamaOtomasyonu3
             // 
             // btnTogglePassword
             // 
-            this.btnTogglePassword.Location = new System.Drawing.Point(829, 172);
+            this.btnTogglePassword.Location = new System.Drawing.Point(744, 172);
             this.btnTogglePassword.Name = "btnTogglePassword";
             this.btnTogglePassword.Size = new System.Drawing.Size(40, 40);
             this.btnTogglePassword.TabIndex = 5;
@@ -119,7 +119,7 @@ namespace AracKiralamaOtomasyonu3
             // 
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(513, 270);
+            this.btnRegister.Location = new System.Drawing.Point(438, 279);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(300, 40);
             this.btnRegister.TabIndex = 5;
@@ -133,7 +133,7 @@ namespace AracKiralamaOtomasyonu3
             this.leftPictureBox.ErrorImage = null;
             this.leftPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("leftPictureBox.Image")));
             this.leftPictureBox.InitialImage = null;
-            this.leftPictureBox.Location = new System.Drawing.Point(150, 50);
+            this.leftPictureBox.Location = new System.Drawing.Point(68, 49);
             this.leftPictureBox.Name = "leftPictureBox";
             this.leftPictureBox.Size = new System.Drawing.Size(259, 300);
             this.leftPictureBox.TabIndex = 0;
@@ -143,7 +143,7 @@ namespace AracKiralamaOtomasyonu3
             // 
             this.rightPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.rightPictureBox.Image = global::AracKiralamaOtomasyonu3.Properties.Resources.rightPictureBox;
-            this.rightPictureBox.Location = new System.Drawing.Point(884, 105);
+            this.rightPictureBox.Location = new System.Drawing.Point(821, 105);
             this.rightPictureBox.Name = "rightPictureBox";
             this.rightPictureBox.Size = new System.Drawing.Size(300, 197);
             this.rightPictureBox.TabIndex = 1;
@@ -154,7 +154,7 @@ namespace AracKiralamaOtomasyonu3
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1382, 526);
+            this.ClientSize = new System.Drawing.Size(1182, 417);
             this.Controls.Add(this.leftPictureBox);
             this.Controls.Add(this.rightPictureBox);
             this.Controls.Add(this.btnTogglePassword);

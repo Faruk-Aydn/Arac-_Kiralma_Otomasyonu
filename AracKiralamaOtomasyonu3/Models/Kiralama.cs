@@ -19,7 +19,8 @@ namespace AracKiralamaOtomasyonu3.Models
         public virtual Kullanici Kullanici { get; set; }
 
         public int AracId { get; set; }
-       
+        public decimal Fiyat { get; set; }
+
         public virtual  Arac Arac { get; set; }
    
 

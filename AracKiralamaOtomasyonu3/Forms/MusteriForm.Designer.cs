@@ -29,11 +29,10 @@ namespace AracKiralamaOtomasyonu3
             this.btnFaturaGecmisi = new System.Windows.Forms.Button();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.btnFiltrele = new System.Windows.Forms.Button();
-            this.pbAracResim = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMevcutAraclar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKiralanmisAraclar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKiralamaGunu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAracResim)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvMevcutAraclar
@@ -174,19 +173,19 @@ namespace AracKiralamaOtomasyonu3
             this.btnFiltrele.UseVisualStyleBackColor = false;
             this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
             // 
-            // pbAracResim
+            // flowLayoutPanel1
             // 
-            this.pbAracResim.Location = new System.Drawing.Point(550, 246);
-            this.pbAracResim.Name = "pbAracResim";
-            this.pbAracResim.Size = new System.Drawing.Size(219, 154);
-            this.pbAracResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAracResim.TabIndex = 0;
-            this.pbAracResim.TabStop = false;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(695, 30);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(300, 497);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // MusteriForm
             // 
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(800, 550);
+            this.ClientSize = new System.Drawing.Size(1015, 550);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvMevcutAraclar);
             this.Controls.Add(this.lblMevcutAraclar);
             this.Controls.Add(this.dgvKiralanmisAraclar);
@@ -198,14 +197,12 @@ namespace AracKiralamaOtomasyonu3
             this.Controls.Add(this.btnFiltrele);
             this.Controls.Add(this.btnGecmisiGor);
             this.Controls.Add(this.btnFaturaGecmisi);
-            this.Controls.Add(this.pbAracResim);
             this.Name = "MusteriForm";
             this.Text = "Müşteri Formu";
             this.Load += new System.EventHandler(this.MusteriForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMevcutAraclar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKiralanmisAraclar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKiralamaGunu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAracResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +220,7 @@ namespace AracKiralamaOtomasyonu3
         private System.Windows.Forms.Button btnFiltrele;
         private System.Windows.Forms.DataGridView dgvKiralanmisAraclar;
         private System.Windows.Forms.Label lblKiralanmisAraclar;
-        private System.Windows.Forms.PictureBox pbAracResim;
+
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

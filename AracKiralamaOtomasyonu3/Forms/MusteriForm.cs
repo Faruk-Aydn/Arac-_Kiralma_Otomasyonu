@@ -14,6 +14,7 @@ namespace AracKiralamaOtomasyonu3
         private int _musteriId;
         private System.Timers.Timer _hatirlatmaTimer;
 
+
         public MusteriForm(int musteriId)
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace AracKiralamaOtomasyonu3
                     .Where(a => !a.KiralandiMi)
                     .Select(a => new
                     {
-                        a.AracId,
+                      
                         a.Model,
                         a.Plaka,
                         a.Fiyat
@@ -97,7 +98,7 @@ namespace AracKiralamaOtomasyonu3
                     .Where(a => a.Model.Contains(model) && !a.KiralandiMi)
                     .Select(a => new
                     {
-                        a.AracId,
+                       
                         a.Model,
                         a.Plaka,
                         a.Fiyat
@@ -211,26 +212,31 @@ namespace AracKiralamaOtomasyonu3
             if (dgvMevcutAraclar.SelectedRows.Count > 0)
             {
                 int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["AracId"].Value);
+                FotograflariGoster(aracId);
+            }
+        }
+            private void FotograflariGoster(int aracId)
+            {
+                flowLayoutPanel1.Controls.Clear(); // Mevcut fotoğrafları temizle
 
-                // Seçilen aracın resmini veritabanından alıp göster
                 using (var context = new AracKiralamaContext())
                 {
-                    var arac = context.Araclar.Find(aracId);
-                    if (arac != null && arac.Resim != null)
+                    var fotograflar = context.AracFotograflar
+                        .Where(f => f.AracId == aracId)
+                        .Select(f => f.FotoData)
+                        .ToList();
+
+                    foreach (var foto in fotograflar)
                     {
-                        using (var ms = new System.IO.MemoryStream(arac.Resim))
-                        {
-                            pbAracResim.Image = Image.FromStream(ms); // Resmi PictureBox'a yükle
-                        }
-                    }
-                    else
-                    {
-                        pbAracResim.Image = null; // Resim yoksa PictureBox'ı temizle
+                        var pb = new PictureBox();
+                        pb.Image = Image.FromStream(new MemoryStream(foto));
+                        pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pb.Width = 100;
+                        pb.Height = 100;
+                        flowLayoutPanel1.Controls.Add(pb);
                     }
                 }
             }
         }
-
-
     }
-}
+

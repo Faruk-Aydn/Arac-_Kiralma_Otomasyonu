@@ -226,8 +226,21 @@
     <Compile Include="Migrations\202411031056016_AracResimEkleme.designer.cs">
       <DependentUpon>202411031056016_AracResimEkleme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411041331313_AracFotografEkleme.cs" />
+    <Compile Include="Migrations\202411041331313_AracFotografEkleme.designer.cs">
+      <DependentUpon>202411041331313_AracFotografEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411041345483_AracFotografTablosuEkleme.cs" />
+    <Compile Include="Migrations\202411041345483_AracFotografTablosuEkleme.designer.cs">
+      <DependentUpon>202411041345483_AracFotografTablosuEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411091211062_UpdateDatabase1.cs" />
+    <Compile Include="Migrations\202411091211062_UpdateDatabase1.designer.cs">
+      <DependentUpon>202411091211062_UpdateDatabase1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Arac.cs" />
+    <Compile Include="Models\AracFotograf.cs" />
     <Compile Include="Models\Bakim.cs" />
     <Compile Include="Models\Fatura.cs" />
     <Compile Include="Models\Kiralama.cs" />
@@ -282,6 +295,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202411031056016_AracResimEkleme.resx">
       <DependentUpon>202411031056016_AracResimEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411041331313_AracFotografEkleme.resx">
+      <DependentUpon>202411041331313_AracFotografEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411041345483_AracFotografTablosuEkleme.resx">
+      <DependentUpon>202411041345483_AracFotografTablosuEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411091211062_UpdateDatabase1.resx">
+      <DependentUpon>202411091211062_UpdateDatabase1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

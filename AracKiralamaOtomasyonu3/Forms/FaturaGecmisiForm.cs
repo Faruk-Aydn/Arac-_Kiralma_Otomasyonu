@@ -41,6 +41,9 @@ namespace AracKiralamaOtomasyonu3
                     }).ToList();
 
                 dgvFaturaGecmisi.DataSource = faturalar;
+
+              
+                dgvFaturaGecmisi.Columns["FaturaId"].Visible = false;
             }
         }
 

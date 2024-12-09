@@ -16,6 +16,7 @@ namespace AracKiralamaOtomasyonu3.BLL
         {
             _context = new AracKiralamaContext();
         }
+
         private bool BakimKontrolu(int aracId)
         {
             using (var context = new AracKiralamaContext())
@@ -34,20 +35,59 @@ namespace AracKiralamaOtomasyonu3.BLL
             return true;
         }
 
+        // Dinamik fiyat hesaplama metodu
+        private decimal DinamikFiyatHesapla(decimal temelFiyat, DateTime kiralamaTarihi)
+        {
+            decimal fiyat = temelFiyat;
+
+            // Tatil günlerini belirleyin (Örnek olarak sabit tatil günleri eklendi)
+            List<DateTime> tatilGunleri = new List<DateTime>
+            {
+                new DateTime(DateTime.Now.Year, 1, 1),  // Yılbaşı
+                new DateTime(DateTime.Now.Year, 5, 1),  // İşçi Bayramı
+                new DateTime(DateTime.Now.Year, 7, 15), // Demokrasi Günü
+                new DateTime(DateTime.Now.Year, 10, 29), // Cumhuriyet Bayramı
+                new DateTime(DateTime.Now.Year, 8, 30) // Zafer bayramı 
+                // Diğer tatil günleri buraya eklenebilir
+            };
+
+            // Hafta sonu kontrolü
+            if (kiralamaTarihi.DayOfWeek == DayOfWeek.Saturday || kiralamaTarihi.DayOfWeek == DayOfWeek.Sunday)
+            {
+                fiyat *= 1.2m; // %20 artış
+            }
+
+            // Tatil günlerine denk geliyorsa fiyat artışı uygula
+            if (tatilGunleri.Contains(kiralamaTarihi.Date))
+            {
+                fiyat *= 1.3m; // %30 artış
+            }
+
+            return fiyat;
+        }
+
         // Araç kiralama işlemi
-        public void AracKirala(int aracId, int musteriId)
+        public void AracKirala(int aracId, int musteriId, DateTime kiralamaBaslangic, int kiralamaSuresi, decimal temelFiyat)
         {
             if (!BakimKontrolu(aracId)) return; // Bakım zamanı gelmişse kiralama yapılmaz
 
-            // Araç kiralama işlemi
+            decimal toplamFiyat = 0;
+
+            // Dinamik fiyatı günlere göre hesapla
+            for (int i = 0; i < kiralamaSuresi; i++)
+            {
+                var gun = kiralamaBaslangic.AddDays(i);
+                toplamFiyat += DinamikFiyatHesapla(temelFiyat, gun);
+            }
+
+            // Yeni kiralama işlemi oluştur
             Kiralama yeniKiralama = new Kiralama
             {
                 AracId = aracId,
                 KullaniciId = musteriId,
                 KiralamaTarihi = DateTime.Now,
                 TeslimTarihi = null,
-               
-
+                Fiyat = toplamFiyat // Dinamik fiyatlandırılmış toplam fiyat
             };
 
             // Aracı kiralanmış olarak işaretle
@@ -77,14 +117,11 @@ namespace AracKiralamaOtomasyonu3.BLL
                     AracModel = k.Arac.Model,
                     Plaka = k.Arac.Plaka,
                     KiralamaTarihi = k.KiralamaTarihi,
-                    TeslimTarihi = k.TeslimTarihi.HasValue ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy") : "Henüz İade Edilmedi"
-                    
+                    TeslimTarihi = k.TeslimTarihi.HasValue ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy") : "Henüz İade Edilmedi",
+                    Fiyat = k.Fiyat.ToString("C") // Fiyatı formatlı olarak göster
                 }).ToList();
             }
         }
-
-
-
 
         // Tüm kiralamaları getir (gerekirse)
         public List<Kiralama> TumKiralamalariGetir()
