@@ -140,12 +140,6 @@
     <Compile Include="BLL\KiralamaService.cs" />
     <Compile Include="BLL\KullaniciService.cs" />
     <Compile Include="DAL\AracKiralamaContext.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FaturaGecmisiForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +232,10 @@
     <Compile Include="Migrations\202411091211062_UpdateDatabase1.designer.cs">
       <DependentUpon>202411091211062_UpdateDatabase1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412131507446_MigrationName.cs" />
+    <Compile Include="Migrations\202412131507446_MigrationName.designer.cs">
+      <DependentUpon>202412131507446_MigrationName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Arac.cs" />
     <Compile Include="Models\AracFotograf.cs" />
@@ -304,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202411091211062_UpdateDatabase1.resx">
       <DependentUpon>202411091211062_UpdateDatabase1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412131507446_MigrationName.resx">
+      <DependentUpon>202412131507446_MigrationName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

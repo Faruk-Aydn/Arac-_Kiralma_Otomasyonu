@@ -38,7 +38,7 @@ namespace AracKiralamaOtomasyonu3
                     .Where(a => !a.KiralandiMi)
                     .Select(a => new
                     {
-                      
+                        GizliAracId = a.AracId,
                         a.Model,
                         a.Plaka,
                         a.Fiyat
@@ -98,7 +98,7 @@ namespace AracKiralamaOtomasyonu3
                     .Where(a => a.Model.Contains(model) && !a.KiralandiMi)
                     .Select(a => new
                     {
-                       
+
                         a.Model,
                         a.Plaka,
                         a.Fiyat
@@ -121,11 +121,37 @@ namespace AracKiralamaOtomasyonu3
             faturaForm.ShowDialog();
         }
 
+
+        private void btnGecmisiGor_Click(object sender, EventArgs e)
+        {
+            using (var context = new AracKiralamaContext())
+            {
+                var kiralamaGecmisi = context.Kiralamalar
+                    .Where(k => k.KullaniciId == _musteriId)
+                    .Include(k => k.Arac)
+                    .Include(k => k.Kullanici)
+                    .ToList();
+
+                var gosterilecekVeri = kiralamaGecmisi.Select(k => new
+                {
+                    k.Arac.Model,
+                    k.Arac.Plaka,
+                    k.KiralamaTarihi,
+                    TeslimTarihi = k.TeslimTarihi.HasValue
+                        ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
+                        : "Henüz Teslim Edilmedi"
+                }).ToList();
+
+                dgvKiralanmisAraclar.DataSource = gosterilecekVeri;
+            }
+        }
+
+
         private void btnAracKirala_Click(object sender, EventArgs e)
         {
             if (dgvMevcutAraclar.SelectedRows.Count > 0)
             {
-                int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["AracId"].Value);
+                int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["GizliAracId"].Value);
                 int kiralamaGunu = (int)numKiralamaGunu.Value;
 
                 OdemeForm odemeForm = new OdemeForm();
@@ -183,60 +209,40 @@ namespace AracKiralamaOtomasyonu3
             }
         }
 
-        private void btnGecmisiGor_Click(object sender, EventArgs e)
-        {
-            using (var context = new AracKiralamaContext())
-            {
-                var kiralamaGecmisi = context.Kiralamalar
-                    .Where(k => k.KullaniciId == _musteriId)
-                    .Include(k => k.Arac)
-                    .Include(k => k.Kullanici)
-                    .ToList();
 
-                var gosterilecekVeri = kiralamaGecmisi.Select(k => new
-                {
-                    k.Arac.Model,
-                    k.Arac.Plaka,
-                    k.KiralamaTarihi,
-                    TeslimTarihi = k.TeslimTarihi.HasValue
-                        ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
-                        : "Henüz Teslim Edilmedi"
-                }).ToList();
-
-                dgvKiralanmisAraclar.DataSource = gosterilecekVeri;
-            }
-        }
 
         private void dgvMevcutAraclar_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvMevcutAraclar.SelectedRows.Count > 0)
             {
-                int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["AracId"].Value);
+                int aracId = Convert.ToInt32(dgvMevcutAraclar.SelectedRows[0].Cells["GizliAracId"].Value);
                 FotograflariGoster(aracId);
             }
         }
-            private void FotograflariGoster(int aracId)
+        private void FotograflariGoster(int aracId)
+        {
+            flowLayoutPanel1.Controls.Clear(); // Mevcut fotoğrafları temizle
+
+            using (var context = new AracKiralamaContext())
             {
-                flowLayoutPanel1.Controls.Clear(); // Mevcut fotoğrafları temizle
+                var fotograflar = context.AracFotograflar
+                    .Where(f => f.AracId == aracId)
+                    .Select(f => f.FotoData)
+                    .ToList();
 
-                using (var context = new AracKiralamaContext())
+                foreach (var foto in fotograflar)
                 {
-                    var fotograflar = context.AracFotograflar
-                        .Where(f => f.AracId == aracId)
-                        .Select(f => f.FotoData)
-                        .ToList();
-
-                    foreach (var foto in fotograflar)
-                    {
-                        var pb = new PictureBox();
-                        pb.Image = Image.FromStream(new MemoryStream(foto));
-                        pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pb.Width = 100;
-                        pb.Height = 100;
-                        flowLayoutPanel1.Controls.Add(pb);
-                    }
+                    var pb = new PictureBox();
+                    pb.Image = Image.FromStream(new MemoryStream(foto));
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb.Width = 100;
+                    pb.Height = 100;
+                    flowLayoutPanel1.Controls.Add(pb);
                 }
             }
         }
     }
+
+
+}
 

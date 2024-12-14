@@ -137,7 +137,7 @@ namespace AracKiralamaOtomasyonu3
             this.cmbRol.Location = new System.Drawing.Point(150, 190);
             this.cmbRol.Size = new System.Drawing.Size(200, 22);
             this.cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cmbRol.Items.AddRange(new object[] { "Müşteri", "Kiralayan" });
+            this.cmbRol.Items.AddRange(new object[] { "Musteri", "Kiralayan" });
 
             // Register Button
             this.btnRegister.Text = "Kayıt Ol";

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AracKiralamaOtomasyonu3.DAL;
 using AracKiralamaOtomasyonu3.Models;
-using System.Collections.Generic;
+
 
 
 namespace AracKiralamaOtomasyonu3.BLL
