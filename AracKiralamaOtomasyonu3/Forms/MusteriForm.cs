@@ -98,7 +98,7 @@ namespace AracKiralamaOtomasyonu3
                     .Where(a => a.Model.Contains(model) && !a.KiralandiMi)
                     .Select(a => new
                     {
-
+                        GizliAracId = a.AracId,
                         a.Model,
                         a.Plaka,
                         a.Fiyat
@@ -129,21 +129,20 @@ namespace AracKiralamaOtomasyonu3
                 var kiralamaGecmisi = context.Kiralamalar
                     .Where(k => k.KullaniciId == _musteriId)
                     .Include(k => k.Arac)
-                    .Include(k => k.Kullanici)
-                    .ToList();
+                    .ToList()
+                    .Select(k => new
+                    {
+                        k.Arac.Model,
+                        k.Arac.Plaka,
+                        k.KiralamaTarihi,
+                        TeslimTarihi = k.TeslimTarihi.HasValue
+                            ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
+                            : "Henüz Teslim Edilmedi"
+                    }).ToList();
 
-                var gosterilecekVeri = kiralamaGecmisi.Select(k => new
-                {
-                    k.Arac.Model,
-                    k.Arac.Plaka,
-                    k.KiralamaTarihi,
-                    TeslimTarihi = k.TeslimTarihi.HasValue
-                        ? k.TeslimTarihi.Value.ToString("dd/MM/yyyy")
-                        : "Henüz Teslim Edilmedi"
-                }).ToList();
-
-                dgvKiralanmisAraclar.DataSource = gosterilecekVeri;
+                dgvKiralanmisAraclar.DataSource = kiralamaGecmisi;
             }
+
         }
 
 
@@ -240,9 +239,25 @@ namespace AracKiralamaOtomasyonu3
                     flowLayoutPanel1.Controls.Add(pb);
                 }
             }
+
+        }
+
+
+        private void MusteriForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Çıkış öncesi kullanıcıya onay soralım
+            DialogResult result = MessageBox.Show("Uygulamayı kapatmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;  // Kapanmayı engeller
+            }
+            else
+            {
+                Application.Exit();  // Uygulamanın tamamen kapanmasını sağlar
+            }
         }
     }
-
-
+    
 }
 

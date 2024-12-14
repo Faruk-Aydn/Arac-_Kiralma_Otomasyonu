@@ -163,7 +163,9 @@ namespace AracKiralamaOtomasyonu3
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnRegister);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giriş Formu";
             ((System.ComponentModel.ISupportInitialize)(this.leftPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightPictureBox)).EndInit();

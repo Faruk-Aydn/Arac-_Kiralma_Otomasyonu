@@ -30,6 +30,7 @@ namespace AracKiralamaOtomasyonu3
             this.txtModel = new System.Windows.Forms.TextBox();
             this.btnFiltrele = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.FormClosing += new FormClosingEventHandler(MusteriForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMevcutAraclar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKiralanmisAraclar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKiralamaGunu)).BeginInit();
@@ -197,7 +198,9 @@ namespace AracKiralamaOtomasyonu3
             this.Controls.Add(this.btnFiltrele);
             this.Controls.Add(this.btnGecmisiGor);
             this.Controls.Add(this.btnFaturaGecmisi);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MusteriForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri Formu";
             this.Load += new System.EventHandler(this.MusteriForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMevcutAraclar)).EndInit();

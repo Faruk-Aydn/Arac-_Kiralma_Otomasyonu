@@ -141,7 +141,9 @@ namespace AracKiralamaOtomasyonu3
             this.Controls.Add(this.lblCVV);
             this.Controls.Add(this.txtCVV);
             this.Controls.Add(this.btnOdemeYap);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "OdemeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ödeme Ekranı";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -246,6 +246,9 @@
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FaturaGecmisiForm.resx">
+      <DependentUpon>FaturaGecmisiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\KiralayanForm.resx">
       <DependentUpon>KiralayanForm.cs</DependentUpon>
     </EmbeddedResource>

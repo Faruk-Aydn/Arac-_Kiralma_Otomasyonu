@@ -29,11 +29,9 @@ namespace AracKiralamaOtomasyonu3
             {
                 var faturalar = context.Faturalar
                     .Include(f => f.Kiralama.Arac)
-                    .Include(f => f.Kiralama.Kullanici)
-                    .Where(f => f.Kiralama.KullaniciId == _musteriId)  // Sadece ilgili müşterinin faturalarını al
+                    .Where(f => f.Kiralama.KullaniciId == _musteriId)
                     .Select(f => new
                     {
-                        f.FaturaId,
                         AracModel = f.Kiralama.Arac.Model,
                         Plaka = f.Kiralama.Arac.Plaka,
                         FaturaTarihi = f.FaturaTarihi,
@@ -41,9 +39,6 @@ namespace AracKiralamaOtomasyonu3
                     }).ToList();
 
                 dgvFaturaGecmisi.DataSource = faturalar;
-
-              
-                dgvFaturaGecmisi.Columns["FaturaId"].Visible = false;
             }
         }
 

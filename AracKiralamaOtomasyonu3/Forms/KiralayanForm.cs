@@ -22,7 +22,7 @@ namespace AracKiralamaOtomasyonu3
             _kiralayanId = kiralayanId;
         }
 
-        private void btnResimYukle_Click(object sender, EventArgs e)
+private void btnResimYukle_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -229,6 +229,21 @@ namespace AracKiralamaOtomasyonu3
         {
             ListeyiGuncelle();
         }
-        
+
+        private void KiralayanForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Çıkış öncesi kullanıcıya onay soralım
+            DialogResult result = MessageBox.Show("Uygulamayı kapatmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;  // Kapanmayı engeller
+            }
+            else
+            {
+                Application.Exit();  // Uygulamanın tamamen kapanmasını sağlar
+            }
+        }
+
     }
 }

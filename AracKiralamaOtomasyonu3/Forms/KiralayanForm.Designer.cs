@@ -38,7 +38,6 @@ namespace AracKiralamaOtomasyonu3
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pictureBoxAracResim = new System.Windows.Forms.PictureBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnAracEkle = new System.Windows.Forms.Button();
@@ -55,18 +54,11 @@ namespace AracKiralamaOtomasyonu3
             this.lblFiyat = new System.Windows.Forms.Label();
             this.lblBakimTarihi = new System.Windows.Forms.Label();
             this.btnResimYukle = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAracResim)).BeginInit();
+            this.pictureBoxAracResim = new System.Windows.Forms.PictureBox();
+            this.FormClosing += new FormClosingEventHandler(KiralayanForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAraclar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAracResim)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxAracResim
-            // 
-            this.pictureBoxAracResim.Location = new System.Drawing.Point(90, 199);
-            this.pictureBoxAracResim.Name = "pictureBoxAracResim";
-            this.pictureBoxAracResim.Size = new System.Drawing.Size(200, 150);
-            this.pictureBoxAracResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAracResim.TabIndex = 0;
-            this.pictureBoxAracResim.TabStop = false;
             // 
             // btnNext
             // 
@@ -248,6 +240,15 @@ namespace AracKiralamaOtomasyonu3
             this.btnResimYukle.UseVisualStyleBackColor = false;
             this.btnResimYukle.Click += new System.EventHandler(this.btnResimYukle_Click);
             // 
+            // pictureBoxAracResim
+            // 
+            this.pictureBoxAracResim.Location = new System.Drawing.Point(90, 199);
+            this.pictureBoxAracResim.Name = "pictureBoxAracResim";
+            this.pictureBoxAracResim.Size = new System.Drawing.Size(200, 150);
+            this.pictureBoxAracResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAracResim.TabIndex = 0;
+            this.pictureBoxAracResim.TabStop = false;
+            // 
             // KiralayanForm
             // 
             this.BackColor = System.Drawing.Color.CadetBlue;
@@ -270,10 +271,12 @@ namespace AracKiralamaOtomasyonu3
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.pictureBoxAracResim);
             this.Font = new System.Drawing.Font("Arial", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "KiralayanForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kiralayan Ekranı";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAracResim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAraclar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAracResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
