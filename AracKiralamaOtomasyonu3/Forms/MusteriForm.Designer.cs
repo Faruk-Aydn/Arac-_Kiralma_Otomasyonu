@@ -1,229 +1,197 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AracKiralamaOtomasyonu3
 {
     partial class MusteriForm
     {
-        private System.ComponentModel.IContainer components = null;
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        private Panel sideMenuPanel;
+        private Panel mainPanel;
+        private Button btnAraclar;
+        private Button btnGecmisKiralamalar;
+        private Button btnFaturalar;
+        private Button btnIndirimler;
+        private Button btnYorumPuanlama;
+        private Button btnLogout;
+        private PictureBox logoPictureBox; 
 
         private void InitializeComponent()
         {
-            this.dgvMevcutAraclar = new System.Windows.Forms.DataGridView();
-            this.dgvKiralanmisAraclar = new System.Windows.Forms.DataGridView();
-            this.btnAracKirala = new System.Windows.Forms.Button();
-            this.btnGecmisiGor = new System.Windows.Forms.Button();
-            this.lblMevcutAraclar = new System.Windows.Forms.Label();
-            this.lblKiralanmisAraclar = new System.Windows.Forms.Label();
-            this.numKiralamaGunu = new System.Windows.Forms.NumericUpDown();
-            this.lblKiralamaGunu = new System.Windows.Forms.Label();
-            this.btnFaturaGecmisi = new System.Windows.Forms.Button();
-            this.txtModel = new System.Windows.Forms.TextBox();
-            this.btnFiltrele = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.FormClosing += new FormClosingEventHandler(MusteriForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMevcutAraclar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKiralanmisAraclar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numKiralamaGunu)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MusteriForm));
+            this.sideMenuPanel = new System.Windows.Forms.Panel();
+            this.btnYorumPuanlama = new System.Windows.Forms.Button();
+            this.btnIndirimler = new System.Windows.Forms.Button();
+            this.btnFaturalar = new System.Windows.Forms.Button();
+            this.btnGecmisKiralamalar = new System.Windows.Forms.Button();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.btnAraclar = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.sideMenuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvMevcutAraclar
+            // sideMenuPanel
             // 
-            this.dgvMevcutAraclar.BackgroundColor = System.Drawing.Color.LightGray;
-            this.dgvMevcutAraclar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMevcutAraclar.Location = new System.Drawing.Point(20, 60);
-            this.dgvMevcutAraclar.Name = "dgvMevcutAraclar";
-            this.dgvMevcutAraclar.Size = new System.Drawing.Size(500, 200);
-            this.dgvMevcutAraclar.TabIndex = 0;
+            this.sideMenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.sideMenuPanel.Controls.Add(this.btnYorumPuanlama);
+            this.sideMenuPanel.Controls.Add(this.btnIndirimler);
+            this.sideMenuPanel.Controls.Add(this.btnFaturalar);
+            this.sideMenuPanel.Controls.Add(this.btnGecmisKiralamalar);
+            this.sideMenuPanel.Controls.Add(this.logoPictureBox);
+            this.sideMenuPanel.Controls.Add(this.btnAraclar);
+            this.sideMenuPanel.Controls.Add(this.btnLogout);
+            this.sideMenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sideMenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.sideMenuPanel.Name = "sideMenuPanel";
+            this.sideMenuPanel.Size = new System.Drawing.Size(200, 700);
+            this.sideMenuPanel.TabIndex = 1;
             // 
-            // dgvKiralanmisAraclar
+            // btnYorumPuanlama
             // 
-            this.dgvKiralanmisAraclar.BackgroundColor = System.Drawing.Color.LightGray;
-            this.dgvKiralanmisAraclar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvKiralanmisAraclar.Location = new System.Drawing.Point(20, 300);
-            this.dgvKiralanmisAraclar.Name = "dgvKiralanmisAraclar";
-            this.dgvKiralanmisAraclar.Size = new System.Drawing.Size(500, 200);
-            this.dgvKiralanmisAraclar.TabIndex = 2;
+            this.btnYorumPuanlama.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnYorumPuanlama.FlatAppearance.BorderSize = 0;
+            this.btnYorumPuanlama.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYorumPuanlama.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnYorumPuanlama.ForeColor = System.Drawing.Color.White;
+            this.btnYorumPuanlama.Image = ((System.Drawing.Image)(resources.GetObject("btnYorumPuanlama.Image")));
+            this.btnYorumPuanlama.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnYorumPuanlama.Location = new System.Drawing.Point(3, 355);
+            this.btnYorumPuanlama.Name = "btnYorumPuanlama";
+            this.btnYorumPuanlama.Size = new System.Drawing.Size(200, 50);
+            this.btnYorumPuanlama.TabIndex = 4;
+            this.btnYorumPuanlama.Text = " Yorum ve Puanlama";
+            this.btnYorumPuanlama.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnYorumPuanlama.UseVisualStyleBackColor = false;
+            this.btnYorumPuanlama.Click += new System.EventHandler(this.BtnYorumPuanlama_Click);
             // 
-            // btnAracKirala
+            // btnIndirimler
             // 
-            this.btnAracKirala.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnAracKirala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAracKirala.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnAracKirala.ForeColor = System.Drawing.Color.White;
-            this.btnAracKirala.Location = new System.Drawing.Point(550, 60);
-            this.btnAracKirala.Name = "btnAracKirala";
-            this.btnAracKirala.Size = new System.Drawing.Size(120, 40);
-            this.btnAracKirala.TabIndex = 4;
-            this.btnAracKirala.Text = "Aracı Kirala";
-            this.btnAracKirala.UseVisualStyleBackColor = false;
-            this.btnAracKirala.Click += new System.EventHandler(this.btnAracKirala_Click);
+            this.btnIndirimler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnIndirimler.FlatAppearance.BorderSize = 0;
+            this.btnIndirimler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIndirimler.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnIndirimler.ForeColor = System.Drawing.Color.White;
+            this.btnIndirimler.Image = ((System.Drawing.Image)(resources.GetObject("btnIndirimler.Image")));
+            this.btnIndirimler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIndirimler.Location = new System.Drawing.Point(3, 299);
+            this.btnIndirimler.Name = "btnIndirimler";
+            this.btnIndirimler.Size = new System.Drawing.Size(200, 50);
+            this.btnIndirimler.TabIndex = 0;
+            this.btnIndirimler.Text = " İndirimler";
+            this.btnIndirimler.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIndirimler.UseVisualStyleBackColor = false;
+            this.btnIndirimler.Click += new System.EventHandler(this.BtnIndirimler_Click);
             // 
-            // btnGecmisiGor
+            // btnFaturalar
             // 
-            this.btnGecmisiGor.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnGecmisiGor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGecmisiGor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGecmisiGor.ForeColor = System.Drawing.Color.White;
-            this.btnGecmisiGor.Location = new System.Drawing.Point(550, 460);
-            this.btnGecmisiGor.Name = "btnGecmisiGor";
-            this.btnGecmisiGor.Size = new System.Drawing.Size(120, 40);
-            this.btnGecmisiGor.TabIndex = 9;
-            this.btnGecmisiGor.Text = "Geçmişi Gör";
-            this.btnGecmisiGor.UseVisualStyleBackColor = false;
-            this.btnGecmisiGor.Click += new System.EventHandler(this.btnGecmisiGor_Click);
+            this.btnFaturalar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnFaturalar.FlatAppearance.BorderSize = 0;
+            this.btnFaturalar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFaturalar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnFaturalar.ForeColor = System.Drawing.Color.White;
+            this.btnFaturalar.Image = ((System.Drawing.Image)(resources.GetObject("btnFaturalar.Image")));
+            this.btnFaturalar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFaturalar.Location = new System.Drawing.Point(3, 252);
+            this.btnFaturalar.Name = "btnFaturalar";
+            this.btnFaturalar.Size = new System.Drawing.Size(200, 50);
+            this.btnFaturalar.TabIndex = 1;
+            this.btnFaturalar.Text = " Faturalar";
+            this.btnFaturalar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFaturalar.UseVisualStyleBackColor = false;
+            this.btnFaturalar.Click += new System.EventHandler(this.BtnFaturalar_Click);
             // 
-            // lblMevcutAraclar
+            // btnGecmisKiralamalar
             // 
-            this.lblMevcutAraclar.AutoSize = true;
-            this.lblMevcutAraclar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblMevcutAraclar.ForeColor = System.Drawing.Color.White;
-            this.lblMevcutAraclar.Location = new System.Drawing.Point(20, 30);
-            this.lblMevcutAraclar.Name = "lblMevcutAraclar";
-            this.lblMevcutAraclar.Size = new System.Drawing.Size(151, 24);
-            this.lblMevcutAraclar.TabIndex = 1;
-            this.lblMevcutAraclar.Text = "Mevcut Araçlar";
+            this.btnGecmisKiralamalar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnGecmisKiralamalar.FlatAppearance.BorderSize = 0;
+            this.btnGecmisKiralamalar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGecmisKiralamalar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGecmisKiralamalar.ForeColor = System.Drawing.Color.White;
+            this.btnGecmisKiralamalar.Image = ((System.Drawing.Image)(resources.GetObject("btnGecmisKiralamalar.Image")));
+            this.btnGecmisKiralamalar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGecmisKiralamalar.Location = new System.Drawing.Point(3, 206);
+            this.btnGecmisKiralamalar.Name = "btnGecmisKiralamalar";
+            this.btnGecmisKiralamalar.Size = new System.Drawing.Size(200, 50);
+            this.btnGecmisKiralamalar.TabIndex = 2;
+            this.btnGecmisKiralamalar.Text = " Geçmiş Kiralamalar";
+            this.btnGecmisKiralamalar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGecmisKiralamalar.UseVisualStyleBackColor = false;
+            this.btnGecmisKiralamalar.Click += new System.EventHandler(this.BtnGecmisKiralamalar_Click);
             // 
-            // lblKiralanmisAraclar
+            // logoPictureBox
             // 
-            this.lblKiralanmisAraclar.AutoSize = true;
-            this.lblKiralanmisAraclar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblKiralanmisAraclar.ForeColor = System.Drawing.Color.White;
-            this.lblKiralanmisAraclar.Location = new System.Drawing.Point(20, 270);
-            this.lblKiralanmisAraclar.Name = "lblKiralanmisAraclar";
-            this.lblKiralanmisAraclar.Size = new System.Drawing.Size(181, 24);
-            this.lblKiralanmisAraclar.TabIndex = 3;
-            this.lblKiralanmisAraclar.Text = "Kiralanmış Araçlar";
+            this.logoPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.logoPictureBox.Image = global::AracKiralamaOtomasyonu3.Properties.Resources.logo;
+            this.logoPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(200, 164);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPictureBox.TabIndex = 0;
+            this.logoPictureBox.TabStop = false;
             // 
-            // numKiralamaGunu
+            // btnAraclar
             // 
-            this.numKiralamaGunu.Font = new System.Drawing.Font("Arial", 10F);
-            this.numKiralamaGunu.Location = new System.Drawing.Point(550, 140);
-            this.numKiralamaGunu.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.numKiralamaGunu.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numKiralamaGunu.Name = "numKiralamaGunu";
-            this.numKiralamaGunu.Size = new System.Drawing.Size(120, 27);
-            this.numKiralamaGunu.TabIndex = 5;
-            this.numKiralamaGunu.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.btnAraclar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAraclar.FlatAppearance.BorderSize = 0;
+            this.btnAraclar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAraclar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAraclar.ForeColor = System.Drawing.Color.White;
+            this.btnAraclar.Image = ((System.Drawing.Image)(resources.GetObject("btnAraclar.Image")));
+            this.btnAraclar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAraclar.Location = new System.Drawing.Point(3, 159);
+            this.btnAraclar.Name = "btnAraclar";
+            this.btnAraclar.Size = new System.Drawing.Size(200, 50);
+            this.btnAraclar.TabIndex = 3;
+            this.btnAraclar.Text = " Araçlar";
+            this.btnAraclar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAraclar.UseVisualStyleBackColor = false;
+            this.btnAraclar.Click += new System.EventHandler(this.BtnAraclar_Click);
             // 
-            // lblKiralamaGunu
+            // btnLogout
             // 
-            this.lblKiralamaGunu.AutoSize = true;
-            this.lblKiralamaGunu.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblKiralamaGunu.ForeColor = System.Drawing.Color.White;
-            this.lblKiralamaGunu.Location = new System.Drawing.Point(550, 120);
-            this.lblKiralamaGunu.Name = "lblKiralamaGunu";
-            this.lblKiralamaGunu.Size = new System.Drawing.Size(125, 19);
-            this.lblKiralamaGunu.TabIndex = 6;
-            this.lblKiralamaGunu.Text = "Kiralama Günü";
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(3, 411);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(200, 50);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = " Çıkış Yap";
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
-            // btnFaturaGecmisi
+            // mainPanel
             // 
-            this.btnFaturaGecmisi.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnFaturaGecmisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFaturaGecmisi.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnFaturaGecmisi.ForeColor = System.Drawing.Color.White;
-            this.btnFaturaGecmisi.Location = new System.Drawing.Point(550, 406);
-            this.btnFaturaGecmisi.Name = "btnFaturaGecmisi";
-            this.btnFaturaGecmisi.Size = new System.Drawing.Size(120, 40);
-            this.btnFaturaGecmisi.TabIndex = 10;
-            this.btnFaturaGecmisi.Text = "Fatura Geçmişi";
-            this.btnFaturaGecmisi.UseVisualStyleBackColor = false;
-            this.btnFaturaGecmisi.Click += new System.EventHandler(this.btnFaturaGecmisi_Click);
-            // 
-            // txtModel
-            // 
-            this.txtModel.Font = new System.Drawing.Font("Arial", 10F);
-            this.txtModel.Location = new System.Drawing.Point(550, 170);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(120, 27);
-            this.txtModel.TabIndex = 7;
-            // 
-            // btnFiltrele
-            // 
-            this.btnFiltrele.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnFiltrele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFiltrele.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnFiltrele.ForeColor = System.Drawing.Color.White;
-            this.btnFiltrele.Location = new System.Drawing.Point(550, 200);
-            this.btnFiltrele.Name = "btnFiltrele";
-            this.btnFiltrele.Size = new System.Drawing.Size(120, 40);
-            this.btnFiltrele.TabIndex = 8;
-            this.btnFiltrele.Text = "Filtrele";
-            this.btnFiltrele.UseVisualStyleBackColor = false;
-            this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(695, 30);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(300, 497);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(200, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1101, 700);
+            this.mainPanel.TabIndex = 0;
             // 
             // MusteriForm
             // 
-            this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1015, 550);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.dgvMevcutAraclar);
-            this.Controls.Add(this.lblMevcutAraclar);
-            this.Controls.Add(this.dgvKiralanmisAraclar);
-            this.Controls.Add(this.lblKiralanmisAraclar);
-            this.Controls.Add(this.btnAracKirala);
-            this.Controls.Add(this.numKiralamaGunu);
-            this.Controls.Add(this.lblKiralamaGunu);
-            this.Controls.Add(this.txtModel);
-            this.Controls.Add(this.btnFiltrele);
-            this.Controls.Add(this.btnGecmisiGor);
-            this.Controls.Add(this.btnFaturaGecmisi);
+            this.ClientSize = new System.Drawing.Size(1301, 700);
+            this.ControlBox = false;
+            this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.sideMenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MusteriForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri Formu";
-            this.Load += new System.EventHandler(this.MusteriForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMevcutAraclar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKiralanmisAraclar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numKiralamaGunu)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MusteriForm_FormClosing);
+            this.sideMenuPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
-
-
-        private System.Windows.Forms.DataGridView dgvMevcutAraclar;
-        private System.Windows.Forms.Button btnAracKirala;
-        private System.Windows.Forms.Button btnGecmisiGor;
-        private System.Windows.Forms.Label lblMevcutAraclar;
-        private System.Windows.Forms.NumericUpDown numKiralamaGunu;
-        private System.Windows.Forms.Label lblKiralamaGunu;
-        private System.Windows.Forms.Button btnFaturaGecmisi;
-        private System.Windows.Forms.TextBox txtModel;
-        private System.Windows.Forms.Button btnFiltrele;
-        private System.Windows.Forms.DataGridView dgvKiralanmisAraclar;
-        private System.Windows.Forms.Label lblKiralanmisAraclar;
-
-        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

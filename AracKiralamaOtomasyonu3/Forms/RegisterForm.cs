@@ -30,7 +30,7 @@ namespace AracKiralamaOtomasyonu3
                 MessageBox.Show("Lütfen tüm alanları doldurunuz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-          
+
             // Yeni kullanıcıyı kaydet
             using (var context = new AracKiralamaContext())
             {
@@ -54,41 +54,41 @@ namespace AracKiralamaOtomasyonu3
             LoginForm loginForm = new LoginForm();
             loginForm.Show();  // Giriş ekranını aç
         }
+
         // txtPassword TextBox'ına odaklanıldığında placeholder silinir
         private void txtPassword_Enter(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "Password")
+            if (txtPassword.Text == "Şifrenizi giriniz")
             {
                 txtPassword.Text = "";
-                txtPassword.UseSystemPasswordChar = true;  // Şifreyi gizlemek için
+                txtPassword.Properties.PasswordChar = '*';  // Şifreyi gizlemek için
                 txtPassword.ForeColor = System.Drawing.Color.Black;
             }
         }
-
 
         // txtPassword TextBox'ından çıkıldığında placeholder geri gelir
         private void txtPassword_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                txtPassword.UseSystemPasswordChar = false;
-                txtPassword.Text = "Password";
+                txtPassword.Properties.PasswordChar = '\0';
+                txtPassword.Text = "Şifrenizi giriniz";
                 txtPassword.ForeColor = System.Drawing.Color.Gray;
             }
         }
+
         // Şifre textBox değiştiğinde çalışacak event
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             // Buraya da şifre kontrolü veya başka mantık ekleyebilirsin
         }
 
-
-
         // Şifre göster/gizle butonuna tıklandığında çalışacak olay
         private void btnTogglePassword_Click(object sender, EventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;  // Şifreyi göster/gizle
+            txtPassword.Properties.PasswordChar = txtPassword.Properties.PasswordChar == '*' ? '\0' : '*';  // Şifreyi göster/gizle
         }
+
         // Placeholder işlevselliği için event'ler
         private void RemoveText(object sender, EventArgs e)
         {

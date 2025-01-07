@@ -1,210 +1,208 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 
 namespace AracKiralamaOtomasyonu3
 {
     partial class RegisterForm
     {
-        private System.ComponentModel.IContainer components = null;
-        private TextBox txtAd;
-        private TextBox txtSoyad;
-        private TextBox txtEmail;
-        private TextBox txtPassword;
-        private Button btnRegister;
-        private ComboBox cmbRol;
-        private Button btnTogglePassword;
-        private Label lblAd;
-        private Label lblSoyad;
-        private Label lblEmail;
-        private Label lblPassword;
-        private Label lblRol;
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        private DevExpress.XtraEditors.LabelControl lblTitle;
+        private DevExpress.XtraEditors.TextEdit txtAd;
+        private DevExpress.XtraEditors.TextEdit txtSoyad;
+        private DevExpress.XtraEditors.TextEdit txtEmail;
+        private DevExpress.XtraEditors.TextEdit txtPassword;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbRol;
+        private DevExpress.XtraEditors.SimpleButton btnRegister;
+        private DevExpress.XtraEditors.PanelControl panelLeft;
+        private DevExpress.XtraEditors.PictureEdit pictureBox;
+        private DevExpress.XtraEditors.PanelControl panelRight;
+        private DevExpress.XtraEditors.LabelControl lblAracKiralama;
 
         private void InitializeComponent()
         {
-            this.txtAd = new System.Windows.Forms.TextBox();
-            this.txtSoyad = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
-            this.btnTogglePassword = new System.Windows.Forms.Button();
-            this.lblAd = new System.Windows.Forms.Label();
-            this.lblSoyad = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.lblRol = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
+            this.lblAracKiralama = new DevExpress.XtraEditors.LabelControl();
+            this.lblTitle = new DevExpress.XtraEditors.LabelControl();
+            this.txtAd = new DevExpress.XtraEditors.TextEdit();
+            this.txtSoyad = new DevExpress.XtraEditors.TextEdit();
+            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
+            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.cmbRol = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
+            this.panelLeft = new DevExpress.XtraEditors.PanelControl();
+            this.pictureBox = new DevExpress.XtraEditors.PictureEdit();
+            this.panelRight = new DevExpress.XtraEditors.PanelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoyad.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRol.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelLeft)).BeginInit();
+            this.panelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelRight)).BeginInit();
+            this.panelRight.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lblAracKiralama
+            // 
+            this.lblAracKiralama.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.lblAracKiralama.Appearance.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Bold);
+            this.lblAracKiralama.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblAracKiralama.Appearance.Options.UseBackColor = true;
+            this.lblAracKiralama.Appearance.Options.UseFont = true;
+            this.lblAracKiralama.Appearance.Options.UseForeColor = true;
+            this.lblAracKiralama.Appearance.Options.UseTextOptions = true;
+            this.lblAracKiralama.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblAracKiralama.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.lblAracKiralama.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblAracKiralama.Location = new System.Drawing.Point(3, 371);
+            this.lblAracKiralama.Name = "lblAracKiralama";
+            this.lblAracKiralama.Size = new System.Drawing.Size(391, 100);
+            this.lblAracKiralama.TabIndex = 0;
+            this.lblAracKiralama.Text = "ARAÇ KİRALAMA";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Appearance.Options.UseFont = true;
+            this.lblTitle.Appearance.Options.UseForeColor = true;
+            this.lblTitle.Appearance.Options.UseTextOptions = true;
+            this.lblTitle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblTitle.Location = new System.Drawing.Point(136, 27);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(160, 46);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Register";
             // 
             // txtAd
             // 
-            this.txtAd.ForeColor = System.Drawing.Color.Gray;
-            this.txtAd.Location = new System.Drawing.Point(150, 30);
+            this.txtAd.Location = new System.Drawing.Point(75, 100);
             this.txtAd.Name = "txtAd";
-            this.txtAd.Size = new System.Drawing.Size(200, 27);
+            this.txtAd.Properties.NullText = "Ad";
+            this.txtAd.Size = new System.Drawing.Size(250, 22);
             this.txtAd.TabIndex = 1;
-            this.txtAd.Text = "Adınızı giriniz";
-            this.txtAd.Enter += new System.EventHandler(this.RemoveText);
-            this.txtAd.Leave += new System.EventHandler(this.AddText);
             // 
             // txtSoyad
             // 
-            this.txtSoyad.ForeColor = System.Drawing.Color.Gray;
-            this.txtSoyad.Location = new System.Drawing.Point(150, 70);
+            this.txtSoyad.Location = new System.Drawing.Point(75, 150);
             this.txtSoyad.Name = "txtSoyad";
-            this.txtSoyad.Size = new System.Drawing.Size(200, 27);
-            this.txtSoyad.TabIndex = 3;
-            this.txtSoyad.Text = "Soyadınızı giriniz";
-            this.txtSoyad.Enter += new System.EventHandler(this.RemoveText);
-            this.txtSoyad.Leave += new System.EventHandler(this.AddText);
+            this.txtSoyad.Properties.NullText = "Soyad";
+            this.txtSoyad.Size = new System.Drawing.Size(250, 22);
+            this.txtSoyad.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.ForeColor = System.Drawing.Color.Gray;
-            this.txtEmail.Location = new System.Drawing.Point(150, 110);
+            this.txtEmail.Location = new System.Drawing.Point(75, 200);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 27);
-            this.txtEmail.TabIndex = 5;
-            this.txtEmail.Text = "Email adresinizi giriniz";
-            this.txtEmail.Enter += new System.EventHandler(this.RemoveText);
-            this.txtEmail.Leave += new System.EventHandler(this.AddText);
+            this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Italic);
+            this.txtEmail.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.txtEmail.Properties.Appearance.Options.UseFont = true;
+            this.txtEmail.Properties.Appearance.Options.UseForeColor = true;
+            this.txtEmail.Properties.NullText = "E-mail";
+            this.txtEmail.Size = new System.Drawing.Size(250, 26);
+            this.txtEmail.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.ForeColor = System.Drawing.Color.Gray;
-            this.txtPassword.Location = new System.Drawing.Point(150, 150);
+            this.txtPassword.Location = new System.Drawing.Point(75, 250);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(200, 27);
-            this.txtPassword.TabIndex = 7;
-            this.txtPassword.Text = "Şifre";
-            this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.Enter += new System.EventHandler(this.RemoveText);
-            this.txtPassword.Leave += new System.EventHandler(this.AddText);
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(150, 230);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(200, 40);
-            this.btnRegister.TabIndex = 11;
-            this.btnRegister.Text = "Kayıt Ol";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.txtPassword.Properties.NullText = "Password";
+            this.txtPassword.Properties.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(250, 22);
+            this.txtPassword.TabIndex = 4;
             // 
             // cmbRol
             // 
-            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRol.Items.AddRange(new object[] {
-            "Musteri",
-            "Kiralayan"});
-            this.cmbRol.Location = new System.Drawing.Point(150, 190);
+            this.cmbRol.Location = new System.Drawing.Point(75, 300);
             this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(200, 27);
-            this.cmbRol.TabIndex = 10;
+            this.cmbRol.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbRol.Properties.NullText = "Rol Seçiniz";
+            cmbRol.Properties.Items.Add("Musteri");
+            cmbRol.Properties.Items.Add("Kiralayan");
+
+            this.cmbRol.Size = new System.Drawing.Size(250, 22);
+            this.cmbRol.TabIndex = 5;
             // 
-            // btnTogglePassword
+            // btnRegister
             // 
-            this.btnTogglePassword.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnTogglePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTogglePassword.ForeColor = System.Drawing.Color.White;
-            this.btnTogglePassword.Location = new System.Drawing.Point(360, 150);
-            this.btnTogglePassword.Name = "btnTogglePassword";
-            this.btnTogglePassword.Size = new System.Drawing.Size(30, 22);
-            this.btnTogglePassword.TabIndex = 8;
-            this.btnTogglePassword.Text = "👁";
-            this.btnTogglePassword.UseVisualStyleBackColor = false;
-            this.btnTogglePassword.Click += new System.EventHandler(this.btnTogglePassword_Click);
+            this.btnRegister.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnRegister.Appearance.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Appearance.Options.UseBackColor = true;
+            this.btnRegister.Appearance.Options.UseFont = true;
+            this.btnRegister.Appearance.Options.UseForeColor = true;
+            this.btnRegister.Location = new System.Drawing.Point(75, 350);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(250, 40);
+            this.btnRegister.TabIndex = 6;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // lblAd
+            // panelLeft
             // 
-            this.lblAd.AutoSize = true;
-            this.lblAd.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblAd.ForeColor = System.Drawing.Color.White;
-            this.lblAd.Location = new System.Drawing.Point(50, 30);
-            this.lblAd.Name = "lblAd";
-            this.lblAd.Size = new System.Drawing.Size(36, 19);
-            this.lblAd.TabIndex = 0;
-            this.lblAd.Text = "Ad:";
+            this.panelLeft.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+            this.panelLeft.Appearance.Options.UseBackColor = true;
+            this.panelLeft.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelLeft.Controls.Add(this.lblAracKiralama);
+            this.panelLeft.Controls.Add(this.pictureBox);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(400, 500);
+            this.panelLeft.TabIndex = 0;
             // 
-            // lblSoyad
+            // pictureBox
             // 
-            this.lblSoyad.AutoSize = true;
-            this.lblSoyad.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSoyad.ForeColor = System.Drawing.Color.White;
-            this.lblSoyad.Location = new System.Drawing.Point(50, 70);
-            this.lblSoyad.Name = "lblSoyad";
-            this.lblSoyad.Size = new System.Drawing.Size(64, 19);
-            this.lblSoyad.TabIndex = 2;
-            this.lblSoyad.Text = "Soyad:";
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox.EditValue = global::AracKiralamaOtomasyonu3.Properties.Resources.logo;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureBox.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureBox.Size = new System.Drawing.Size(400, 500);
+            this.pictureBox.TabIndex = 0;
             // 
-            // lblEmail
+            // panelRight
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.ForeColor = System.Drawing.Color.White;
-            this.lblEmail.Location = new System.Drawing.Point(50, 110);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(57, 19);
-            this.lblEmail.TabIndex = 4;
-            this.lblEmail.Text = "Email:";
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblPassword.ForeColor = System.Drawing.Color.White;
-            this.lblPassword.Location = new System.Drawing.Point(50, 150);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(51, 19);
-            this.lblPassword.TabIndex = 6;
-            this.lblPassword.Text = "Şifre:";
-            // 
-            // lblRol
-            // 
-            this.lblRol.AutoSize = true;
-            this.lblRol.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblRol.ForeColor = System.Drawing.Color.White;
-            this.lblRol.Location = new System.Drawing.Point(50, 190);
-            this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(41, 19);
-            this.lblRol.TabIndex = 9;
-            this.lblRol.Text = "Rol:";
+            this.panelRight.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panelRight.Appearance.Options.UseBackColor = true;
+            this.panelRight.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelRight.Controls.Add(this.lblTitle);
+            this.panelRight.Controls.Add(this.txtAd);
+            this.panelRight.Controls.Add(this.txtSoyad);
+            this.panelRight.Controls.Add(this.txtEmail);
+            this.panelRight.Controls.Add(this.txtPassword);
+            this.panelRight.Controls.Add(this.cmbRol);
+            this.panelRight.Controls.Add(this.btnRegister);
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRight.Location = new System.Drawing.Point(400, 0);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(400, 500);
+            this.panelRight.TabIndex = 1;
             // 
             // RegisterForm
             // 
-            this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(500, 350);
-            this.Controls.Add(this.lblAd);
-            this.Controls.Add(this.txtAd);
-            this.Controls.Add(this.lblSoyad);
-            this.Controls.Add(this.txtSoyad);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.btnTogglePassword);
-            this.Controls.Add(this.lblRol);
-            this.Controls.Add(this.cmbRol);
-            this.Controls.Add(this.btnRegister);
-            this.Font = new System.Drawing.Font("Arial", 10F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.panelRight);
+            this.Controls.Add(this.panelLeft);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Kayıt Ol";
+            this.Text = "Register Form";
+            ((System.ComponentModel.ISupportInitialize)(this.txtAd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoyad.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRol.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelLeft)).EndInit();
+            this.panelLeft.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelRight)).EndInit();
+            this.panelRight.ResumeLayout(false);
+            this.panelRight.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
     }

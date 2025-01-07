@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using AracKiralamaOtomasyonu3.DAL;
 using AracKiralamaOtomasyonu3.Models;
 
 namespace AracKiralamaOtomasyonu3
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : XtraForm
     {
         public LoginForm()
         {
             InitializeComponent();
-            this.Load += new EventHandler(LoginForm_Load);  // Form yüklendiğinde çağrılır
+            this.Load += new EventHandler(LoginForm_Load);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            // Test kullanıcılarını veritabanına ekliyoruz
+            // Test kullanıcılarını veritabanına ekle
             using (var context = new AracKiralamaContext())
             {
                 if (!context.Kullanicilar.Any())
@@ -25,8 +26,8 @@ namespace AracKiralamaOtomasyonu3
                     {
                         Ad = "Ahmet",
                         Soyad = "Yılmaz",
-                        Email = "Ahmet@example.com",
-                        Sifre = "12345",  // Not: Güçlü şifreleme kullanılmalı
+                        Email = "ahmet@example.com",
+                        Sifre = "12345",
                         Rol = "Musteri"
                     };
 
@@ -35,7 +36,7 @@ namespace AracKiralamaOtomasyonu3
                         Ad = "Mehmet",
                         Soyad = "Kaya",
                         Email = "mehmet@example.com",
-                        Sifre = "12345",  // Not: Güçlü şifreleme kullanılmalı
+                        Sifre = "12345",
                         Rol = "Kiralayan"
                     };
 
@@ -46,27 +47,19 @@ namespace AracKiralamaOtomasyonu3
             }
         }
 
-        // Şifre göster/gizle butonuna tıklandığında çalışacak olay
-        private void btnTogglePassword_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;  // Şifreyi göster/gizle
-        }
-
-        // Giriş butonuna tıklandığında çalışacak kod
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            // Giriş bilgilerini al
-            string email = txtEmail.Text;
-            string password = txtPassword.Text;
+            string email = txtEmail.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
             // Boş alan kontrolü
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Email ve şifre alanları boş bırakılamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Email ve şifre alanları boş bırakılamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Veritabanı ile kullanıcıyı kontrol et
+            // Veritabanında kullanıcıyı kontrol et
             using (var context = new AracKiralamaContext())
             {
                 var kullanici = context.Kullanicilar
@@ -74,92 +67,55 @@ namespace AracKiralamaOtomasyonu3
 
                 if (kullanici != null)
                 {
-                    // Kullanıcı bulundu, rolüne göre yönlendirme
                     if (kullanici.Rol == "Musteri")
                     {
-                        MessageBox.Show("Müşteri olarak giriş yapıldı!", "Başarılı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Müşteri olarak giriş yapıldı!", "Başarılı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         MusteriForm musteriForm = new MusteriForm(kullanici.KullaniciId);
                         musteriForm.Show();
-                        this.Hide();  // Giriş ekranını gizle
+                        this.Hide();
                     }
                     else if (kullanici.Rol == "Kiralayan")
                     {
-                        MessageBox.Show("Kiralayan olarak giriş yapıldı!", "Başarılı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Kiralayan olarak giriş yapıldı!", "Başarılı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         KiralayanForm kiralayanForm = new KiralayanForm(kullanici.KullaniciId);
                         kiralayanForm.Show();
-                        this.Hide();  // Giriş ekranını gizle
+                        this.Hide();
                     }
                 }
                 else
                 {
-                    // Kullanıcı bulunamadıysa hata mesajı göster
-                    MessageBox.Show("Email veya şifre hatalı!", "Giriş Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Email veya şifre hatalı!", "Giriş Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        // txtEmail TextBox'ına odaklanıldığında placeholder silinir
-        private void txtEmail_Enter(object sender, EventArgs e)
+        private void BtnRegister_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "Email")
-            {
-                txtEmail.Text = "";
-                txtEmail.ForeColor = System.Drawing.Color.Black;
-            }
-        }
-
-        // txtEmail TextBox'ından çıkıldığında placeholder geri gelir
-        private void txtEmail_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                txtEmail.Text = "Email";
-                txtEmail.ForeColor = System.Drawing.Color.Gray;
-            }
-        }
-
-        // txtPassword TextBox'ına odaklanıldığında placeholder silinir
-        private void txtPassword_Enter(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "Password")
-            {
-                txtPassword.Text = "";
-                txtPassword.UseSystemPasswordChar = true;  // Şifreyi gizlemek için
-                txtPassword.ForeColor = System.Drawing.Color.Black;
-            }
-        }
-
-        // txtPassword TextBox'ından çıkıldığında placeholder geri gelir
-        private void txtPassword_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                txtPassword.UseSystemPasswordChar = false;
-                txtPassword.Text = "Password";
-                txtPassword.ForeColor = System.Drawing.Color.Gray;
-            }
-        }
-        // Email textBox değiştiğinde çalışacak event
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-            // Buraya istediğin mantığı ekleyebilirsin, örneğin anlık doğrulama yapılabilir
-        }
-
-        // Şifre textBox değiştiğinde çalışacak event
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-            // Buraya da şifre kontrolü veya başka mantık ekleyebilirsin
-        }
-
-
-        // Kayıt ol butonuna tıklandığında yeni bir kayıt formu açabilir ya da kayıt işlemi yapılabilir
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Kayıt olma formu gösterilecek!", "Kayıt", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Buraya kayıt olma işlemleri ya da yeni form açılması eklenebilir
+            XtraMessageBox.Show("Kayıt olma formu gösterilecek!", "Kayıt", MessageBoxButtons.OK, MessageBoxIcon.Information);
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
+        }
 
+        private void BtnTogglePassword_Click(object sender, EventArgs e)
+        {
+            // Şifre gizleme/gösterme
+            if (txtPassword.Properties.PasswordChar == '*')
+            {
+                txtPassword.Properties.PasswordChar = '\0'; // Şifreyi göster
+                btnTogglePassword.Text = "Şifreyi Gizle";
+            }
+            else
+            {
+                txtPassword.Properties.PasswordChar = '*'; // Şifreyi gizle
+                btnTogglePassword.Text = "Şifreyi Göster";
+            }
+        }
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+         
+           
+                Application.Exit();
+            
         }
 
 

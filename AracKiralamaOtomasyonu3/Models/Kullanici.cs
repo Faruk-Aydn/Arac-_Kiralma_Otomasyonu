@@ -29,7 +29,8 @@ namespace AracKiralamaOtomasyonu3.Models
         public string Sifre { get; set; }
 
         [Required]
-        public string Rol { get; set; }  // "Musteri" veya "Kiralayan"
+        public string Rol { get; set; }
+        public ICollection<Rezervasyon> Rezervasyonlar { get; set; }
     }
 }
 

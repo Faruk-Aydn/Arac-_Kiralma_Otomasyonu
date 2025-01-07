@@ -22,5 +22,6 @@ namespace AracKiralamaOtomasyonu3.DAL
         public DbSet<Fatura> Faturalar { get; set; }
         public DbSet<Bakim> Bakimlar { get; set; }
         public DbSet<AracFotograf> AracFotograflar { get; set; }
+        public DbSet<Rezervasyon> Rezervasyonlar { get; set; }
     }
 }

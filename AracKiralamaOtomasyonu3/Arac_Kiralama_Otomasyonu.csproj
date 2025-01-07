@@ -37,6 +37,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v18.1.UI, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -125,6 +135,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -140,11 +151,26 @@
     <Compile Include="BLL\KiralamaService.cs" />
     <Compile Include="BLL\KullaniciService.cs" />
     <Compile Include="DAL\AracKiralamaContext.cs" />
-    <Compile Include="Forms\FaturaGecmisiForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\AddCarControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FaturaGecmisiForm.Designer.cs">
-      <DependentUpon>FaturaGecmisiForm.cs</DependentUpon>
+    <Compile Include="Forms\AraclarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FaturalarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\GecmisKiralamalarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\IndirimlerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\KiralanmamisControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\KiralanmisControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\KiralayanForm.cs">
       <SubType>Form</SubType>
@@ -157,6 +183,9 @@
     </Compile>
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MusteriControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\MusteriForm.cs">
       <SubType>Form</SubType>
@@ -175,6 +204,15 @@
     </Compile>
     <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RezervasyonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RezervasyonForm.Designer.cs">
+      <DependentUpon>RezervasyonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\YorumPuanlamaControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Migrations\202410141607429_InitialCreate.cs" />
     <Compile Include="Migrations\202410141607429_InitialCreate.designer.cs">
@@ -236,6 +274,30 @@
     <Compile Include="Migrations\202412131507446_MigrationName.designer.cs">
       <DependentUpon>202412131507446_MigrationName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412241809228_UpdateDatabase2.cs" />
+    <Compile Include="Migrations\202412241809228_UpdateDatabase2.designer.cs">
+      <DependentUpon>202412241809228_UpdateDatabase2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412261244027_AddNewFieldsToArac.cs" />
+    <Compile Include="Migrations\202412261244027_AddNewFieldsToArac.designer.cs">
+      <DependentUpon>202412261244027_AddNewFieldsToArac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412280923405_AddIndirimliFiyatAndResim.cs" />
+    <Compile Include="Migrations\202412280923405_AddIndirimliFiyatAndResim.designer.cs">
+      <DependentUpon>202412280923405_AddIndirimliFiyatAndResim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412311330506_AddReservationTable.cs" />
+    <Compile Include="Migrations\202412311330506_AddReservationTable.designer.cs">
+      <DependentUpon>202412311330506_AddReservationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412311401590_dene.cs" />
+    <Compile Include="Migrations\202412311401590_dene.designer.cs">
+      <DependentUpon>202412311401590_dene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202501010900362_fatura.cs" />
+    <Compile Include="Migrations\202501010900362_fatura.designer.cs">
+      <DependentUpon>202501010900362_fatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Arac.cs" />
     <Compile Include="Models\AracFotograf.cs" />
@@ -244,10 +306,24 @@
     <Compile Include="Models\Kiralama.cs" />
     <Compile Include="Models\KiralamaDetayDto.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\KullaniciIndirimi.cs" />
+    <Compile Include="Models\Rezervasyon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FaturaGecmisiForm.resx">
-      <DependentUpon>FaturaGecmisiForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddCarControl.resx">
+      <DependentUpon>AddCarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AraclarControl.resx">
+      <DependentUpon>AraclarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FaturalarControl.resx">
+      <DependentUpon>FaturalarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GecmisKiralamalarControl.resx">
+      <DependentUpon>GecmisKiralamalarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KiralanmamisControl.resx">
+      <DependentUpon>KiralanmamisControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KiralayanForm.resx">
       <DependentUpon>KiralayanForm.cs</DependentUpon>
@@ -263,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RezervasyonForm.resx">
+      <DependentUpon>RezervasyonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\YorumPuanlamaControl.resx">
+      <DependentUpon>YorumPuanlamaControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410141607429_InitialCreate.resx">
       <DependentUpon>202410141607429_InitialCreate.cs</DependentUpon>
@@ -309,6 +391,25 @@
     <EmbeddedResource Include="Migrations\202412131507446_MigrationName.resx">
       <DependentUpon>202412131507446_MigrationName.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412241809228_UpdateDatabase2.resx">
+      <DependentUpon>202412241809228_UpdateDatabase2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412261244027_AddNewFieldsToArac.resx">
+      <DependentUpon>202412261244027_AddNewFieldsToArac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412280923405_AddIndirimliFiyatAndResim.resx">
+      <DependentUpon>202412280923405_AddIndirimliFiyatAndResim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412311330506_AddReservationTable.resx">
+      <DependentUpon>202412311330506_AddReservationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412311401590_dene.resx">
+      <DependentUpon>202412311401590_dene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501010900362_fatura.resx">
+      <DependentUpon>202501010900362_fatura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -319,6 +420,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -336,8 +438,38 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\car.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\discount.png" />
+    <Content Include="Icons\invoice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\rent.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="login-Photoroom.png" />
     <Content Include="loginCar-Photoroom.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\raiting.png" />
+    <None Include="Resources\satisfaction.png" />
+    <None Include="Resources\rating.png" />
+    <None Include="Resources\indirim.jpg" />
+    <None Include="Resources\benzin.jpg" />
+    <None Include="Resources\dizel.jpg" />
+    <None Include="Resources\sign.png" />
+    <None Include="Resources\discount2.png" />
+    <None Include="Resources\discount.png" />
+    <None Include="Resources\diesel_discount.webp" />
+    <None Include="Resources\plus1.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\FA logo.jpg" />
+    <None Include="Resources\phone.png" />
+    <None Include="Resources\arac-kiralama-icerik.jpg" />
+    <None Include="Resources\coupon.png" />
+    <None Include="Resources\invoice.png" />
+    <None Include="Resources\rental-car.png" />
+    <None Include="Resources\car %281%29.png" />
     <None Include="Resources\images-Photoroom.png" />
     <None Include="Resources\images1.png" />
     <None Include="Resources\images.png" />
