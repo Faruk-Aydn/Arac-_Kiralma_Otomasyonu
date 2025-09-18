@@ -28,7 +28,7 @@ Proje **katmanlı mimari** ile geliştirilmiştir:
 - **Veri Erişim Katmanı (DAL):** `AracKiralamaContext` + Entity Framework  
 
 ### 📋 Class Diyagramı
-![Class Diagram](https://gist.github.com/user-attachments/assets/2ed4d225-784c-4041-b923-db1b45917588)
+![Class Diagram](./images/class.png)
 
 ### 🗄️ Veritabanı (ER Diyagramı)
 ![ER Diyagramı](https://gist.github.com/user-attachments/assets/8bf18533-65de-4fd8-be69-8521b3b82585)
