@@ -31,7 +31,7 @@ Proje **katmanlı mimari** ile geliştirilmiştir:
 ![Class Diagram](./images/class.png)
 
 ### 🗄️ Veritabanı (ER Diyagramı)
-![ER Diyagramı](https://gist.github.com/user-attachments/assets/8bf18533-65de-4fd8-be69-8521b3b82585)
+![ER Diyagramı](./images/erdiagram.png)
 
 ---
 
@@ -39,43 +39,43 @@ Proje **katmanlı mimari** ile geliştirilmiştir:
 
 ### 🔑 Kullanıcı İşlemleri
 - **Giriş Ekranı**  
-  ![LoginForm](https://gist.github.com/user-attachments/assets/0bd07418-6b97-414a-8650-e127fc53dee8)
+  ![LoginForm](./images/login.png)
 
 - **Kayıt Ekranı**  
-  ![RegisterForm](https://gist.github.com/user-attachments/assets/0d04a99f-3508-464e-aef5-a290909ca9db)
+  ![RegisterForm](./images/register.png)
 
 - **Müşteri Paneli**  
-  ![MusteriForm](https://gist.github.com/user-attachments/assets/de2fff57-e077-43c8-94f5-4481d7650177)
+  ![MusteriForm](./images/müşteri.png)
 
 - **Kiralayan Paneli**  
-  ![KiralayanForm](https://gist.github.com/user-attachments/assets/dffa043a-b51b-4af6-a18b-6d235814846b)
+  ![KiralayanForm](./images/kiralayan.png)
 
 ---
 
 ### 🚘 Araç İşlemleri
 - **Araçlar Listesi**  
-  ![Araclar](https://gist.github.com/user-attachments/assets/f1ce8501-4316-4119-aef6-545d1d975bf7)
+  ![Araclar](./images/araçlar.png)
 
 - **Araç Ekleme**  
-  ![Araç Ekleme](https://gist.github.com/user-attachments/assets/57058868-0e21-4079-9f12-2b4793c7ddfc)
+  ![Araç Ekleme](./images/araçekleme.png)
 
 - **Kiralanmış Araçlar**  
-  ![Kiralanmis](https://gist.github.com/user-attachments/assets/2874b1db-39d0-44a4-84f3-d2c95cab623a)
+  ![Kiralanmis](./images/kiralanmış.png)
 
 - **Kiralanmamış Araçlar**  
-  ![Kiralanmamis](https://gist.github.com/user-attachments/assets/ad843bac-a651-46b6-a169-789698723fba)
+  ![Kiralanmamis](./images/kiralanmamış.png)
 
 ---
 
 ### 📑 Diğer Modüller
 - **Faturalar**  
-  ![Faturalar](https://gist.github.com/user-attachments/assets/6003cf77-5184-448a-bb9d-8e2aa0efe0bf)
+  ![Faturalar](./images/fatura.png)
 
 - **İndirimler**  
-  ![indirim](https://gist.github.com/user-attachments/assets/0246236d-6074-4e6f-9d29-c9bc8e3d6540)
+  ![indirim](indirim)
 
 - **Yorumlar**  
-  ![yorumlar](https://gist.github.com/user-attachments/assets/e65963aa-458e-43a0-b71d-423030417362)
+  ![yorumlar](./images/yorum.png)
 
 ---
 
